@@ -10,7 +10,7 @@ with open("README.md") as README_md:
 
 setup(
     name="gym_super_mario_bros",
-    version="8.0.0",
+    version="8.1.0",
     description="Super Mario Bros. for OpenAI Gymnasium",
     long_description=README,
     long_description_content_type="text/markdown",

@@ -39,6 +39,7 @@ class SuperMarioBrosEnv(NESEnv):
         target=None,
         render_mode="human",
         reward_fn=None,
+        headless=False,
     ):
         """
         Initialize a new Super Mario Bros environment.
@@ -58,7 +59,9 @@ class SuperMarioBrosEnv(NESEnv):
         # decode the ROM path based on mode and lost levels flag
         rom = rom_path(lost_levels, rom_mode)
         # initialize the super object with the ROM path
-        super(SuperMarioBrosEnv, self).__init__(rom, render_mode=render_mode)
+        super(SuperMarioBrosEnv, self).__init__(
+            rom, render_mode=render_mode, headless=headless
+        )
         # set the target world, stage, and area variables
         target = decode_target(target, lost_levels)
         self._target_world, self._target_stage, self._target_area = target
@@ -429,6 +432,9 @@ class SuperMarioBrosEnv(NESEnv):
             y_pos=self._y_position,
             is_dead=self._is_dying or self._is_dead,
         )
+
+    def get_info(self):
+        return self._get_info()
 
 
 # explicitly define the outward facing API of this module
